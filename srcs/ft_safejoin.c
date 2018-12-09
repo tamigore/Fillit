@@ -6,7 +6,7 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 19:27:31 by tamigore          #+#    #+#             */
-/*   Updated: 2018/12/05 19:34:58 by tamigore         ###   ########.fr       */
+/*   Updated: 2018/12/09 20:16:39 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,20 @@ char	*ft_safejoin(char *s1, char *s2)
 	ft_strcat(join, s2);
 	free(tmp);
 	return (join);
+}
+
+char	*ft_cutstr(char *p, int i)
+{
+	char	*cut;
+	int		j;
+	int		x;
+
+	j = i + 20;
+	x = 0;
+	if (!((cut = ft_strnew(22))))
+		return (NULL);
+	while (i <= j)
+		cut[x++] = p[i++];
+	cut[x] = '\0';
+	return (cut);
 }
