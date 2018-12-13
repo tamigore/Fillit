@@ -6,7 +6,7 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 19:27:31 by tamigore          #+#    #+#             */
-/*   Updated: 2018/12/09 20:16:39 by tamigore         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:43:33 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	*ft_cutstr(char *p, int i)
 
 	j = i + 20;
 	x = 0;
-	if (!((cut = ft_strnew(22))))
+	if (!((cut = ft_strnew(21))))
 		return (NULL);
-	while (i <= j)
+	while (i < j)
 		cut[x++] = p[i++];
 	cut[x] = '\0';
 	return (cut);

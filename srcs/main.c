@@ -6,11 +6,11 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 16:31:06 by tamigore          #+#    #+#             */
-/*   Updated: 2018/12/09 20:28:41 by tamigore         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:23:32 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/fillit.h"
+#include "fillit.h"
 #include <stdio.h>
 
 int			main(int ac, char **av)
@@ -18,6 +18,7 @@ int			main(int ac, char **av)
 	t_fill	*list;
 	char	c;
 	char	*p;
+	int		*tab;
 	int 	fd;
 	int 	i;
 
@@ -35,17 +36,19 @@ int			main(int ac, char **av)
 	i = 0;
 	while(p[i])
 	{
-		ft_listadd(&list, ft_listnew(c, ft_cutstr(p, i)));
+		ft_listadd(&list, ft_listnew(c, ft_cutstr(p, i)), c);
 		c++;
+		if (p[i + 20] == '\0')
+			break ; 
 		i += 21;
 	}
-	i = 0;
+	free(p);
 	while (list)
 	{
-		printf("index=%c\n", list->index);
+		tab = ft_check_place(list->content);
 		list = list->next;
-		i++;
+		printf("%d  %d  %d  %d\n", tab[0], tab[1], tab[2], tab[3]);
 	}
-	printf("i=%d\n", i);
+	free(tab);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: artprevo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 00:20:03 by artprevo          #+#    #+#              #
-#    Updated: 2018/12/09 18:46:15 by tamigore         ###   ########.fr        #
+#    Updated: 2018/12/12 17:42:36 by tamigore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRC = main.c		\
 	  ft_safejoin.c	\
 	  parsing.c		\
 	  ft_list.c		\
-	  ft_array.c
+	  ft_array.c	\
+	  ft_fill.c		\
+	  backtrack.c
 
 OBJ = $(SRC:.c=.o)
 
