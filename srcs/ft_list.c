@@ -6,28 +6,25 @@
 /*   By: artprevo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:33:02 by artprevo          #+#    #+#             */
-/*   Updated: 2018/12/11 17:20:39 by tamigore         ###   ########.fr       */
+/*   Updated: 2019/01/04 18:20:53 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 t_fill		*ft_listnew(char index, char *content)
 {
 	t_fill	*new;
-	t_fill	*tmp;
 
 	if (!(new = malloc(sizeof(*new))))
 		return (NULL);
 	if (new == NULL)
 		new->content = NULL;
-	else if (!(new->content = ft_strdup(ft_swapchar(content, index))))
+	else if (!(new->content = ft_strdup(ft_swap(content, index))))
 		return (NULL);
 	new->index = index;
 	new->next = NULL;
 	new->prev = NULL;
-	printf("content = \n%s\nindex = %c\n", new->content, new->index);
 	return (new);
 }
 
@@ -73,7 +70,7 @@ size_t		ft_listlen(t_fill *list)
 	size_t	i;
 
 	i = 1;
-	while(list->next)
+	while (list->next)
 	{
 		list = list->next;
 		i++;

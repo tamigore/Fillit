@@ -6,11 +6,11 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 16:18:44 by tamigore          #+#    #+#             */
-/*   Updated: 2018/12/09 20:22:14 by tamigore         ###   ########.fr       */
+/*   Updated: 2019/01/04 20:09:22 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/fillit.h"
+#include "fillit.h"
 
 static int	ft_find_t1(char *p, int i)
 {
@@ -106,7 +106,8 @@ static int	ft_valid_block(char *p, int line, int count)
 			count = 0;
 			line = 0;
 		}
-		else if (line == 5 && p[i - 1] != '\n')
+		else if ((line == 5 && p[i - 1] != '\n') || \
+				(p[i] == '\n' && p[i - 1] == '\n'))
 			return (0);
 		if (p[i] == '#')
 			count++;
@@ -117,21 +118,25 @@ static int	ft_valid_block(char *p, int line, int count)
 	return (1);
 }
 
-char		*ft_valid_file(int fd)
+t_fill		*ft_valid_file(int fd)
 {
-	char	*p;
 	char	buf[22];
+	char	c;
 	int		r;
+	t_fill	*list;
 
-	if (!(p = ft_strnew(1)) || fd < 0 || read(fd, buf, 0) == -1)
+	if (fd < 0 || read(fd, buf, 0) == -1)
 		return (NULL);
+	c = 'A';
 	while ((r = read(fd, buf, 21)) > 0)
 	{
 		buf[r] = '\0';
-		if (!(p = ft_safejoin(p, buf)) || r < 20 || ft_strlen(p) > 545)
+		if (!(ft_valid_tetra(buf, 0)) || !(ft_valid_block(buf, 0, 0)))
 			return (NULL);
+		ft_listadd(&list, ft_listnew(c, buf), c);
+		c++;
 	}
-	if (!(ft_valid_tetra(p, 0)) || !(ft_valid_block(p, 0, 0)))
-		return (NULL);
-	return (p);
+	if (ft_strlen(buf) == 20)
+		return (list);
+	return (NULL);
 }

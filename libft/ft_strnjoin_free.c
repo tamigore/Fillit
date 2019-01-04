@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safejoin.c                                      :+:      :+:    :+:   */
+/*   ft_strnjoin_free.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: artprevo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 19:27:31 by tamigore          #+#    #+#             */
-/*   Updated: 2018/12/11 17:43:33 by tamigore         ###   ########.fr       */
+/*   Created: 2018/12/06 17:03:42 by artprevo          #+#    #+#             */
+/*   Updated: 2018/12/09 20:15:47 by artprevo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_safejoin(char *s1, char *s2)
+char	*ft_strnjoin_free(char *s1, char *s2, int r)
 {
 	char	*join;
+	int		diff;
 	char	*tmp;
 
 	tmp = s1;
-	if (!s1 || !s2 || !(join = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+	diff = ft_strlen(s2) - r;
+	if (!s1 || !s2 || !(join = ft_strnew(ft_strlen(s1) + ft_strlen(s2) - diff)))
 		return (NULL);
 	ft_strcat(join, s1);
-	ft_strcat(join, s2);
+	ft_strncat(join, s2, r);
 	free(tmp);
 	return (join);
-}
-
-char	*ft_cutstr(char *p, int i)
-{
-	char	*cut;
-	int		j;
-	int		x;
-
-	j = i + 20;
-	x = 0;
-	if (!((cut = ft_strnew(21))))
-		return (NULL);
-	while (i < j)
-		cut[x++] = p[i++];
-	cut[x] = '\0';
-	return (cut);
 }

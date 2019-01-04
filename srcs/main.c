@@ -6,7 +6,7 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 16:31:06 by tamigore          #+#    #+#             */
-/*   Updated: 2018/12/13 18:23:32 by tamigore         ###   ########.fr       */
+/*   Updated: 2019/01/04 19:07:16 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,39 +16,28 @@
 int			main(int ac, char **av)
 {
 	t_fill	*list;
-	char	c;
 	char	*p;
-	int		*tab;
-	int 	fd;
-	int 	i;
+	int		fd;
+	size_t	i;
 
 	if (ac != 2 || (fd = open(av[1], O_RDWR)) == -1)
 	{
 		ft_putstr("usage : ./fillit valid_file\n");
 		return (0);
 	}
-	if (!(p = ft_valid_file(fd)))
+	if (!(list = ft_valid_file(fd)))
 	{
 		ft_putstr("error\n");
 		return (0);
 	}
-	c = 'A';
-	i = 0;
-	while(p[i])
+	i = ft_count(ft_listlen(list) * 4);
+	p = ft_init(i);
+	while ((ft_place(p, list, i, 0)) == 0)
 	{
-		ft_listadd(&list, ft_listnew(c, ft_cutstr(p, i)), c);
-		c++;
-		if (p[i + 20] == '\0')
-			break ; 
-		i += 21;
+		i++;
+		free(p);
+		p = ft_init(i);
 	}
-	free(p);
-	while (list)
-	{
-		tab = ft_check_place(list->content);
-		list = list->next;
-		printf("%d  %d  %d  %d\n", tab[0], tab[1], tab[2], tab[3]);
-	}
-	free(tab);
+	ft_putstr(p);
 	return (0);
 }
