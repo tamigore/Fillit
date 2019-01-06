@@ -112,7 +112,6 @@ void		ft_fill(char *tab, t_fill *new, size_t j, size_t n)
 	int		z;
 
 	y = 0;
-	z = 0;
 	buf = new->content;
 	index = new->index;
 	while (y != 4)
@@ -121,10 +120,9 @@ void		ft_fill(char *tab, t_fill *new, size_t j, size_t n)
 			j = j - ft_countz(buf, 0);
 		i = y + (n * y) + j;
 		x = ft_countx(buf, y);
+        z = 0;
 		if (y > 0)
 			z = ft_countz(buf, y);
-		else
-			z = 0;
 		while (x != 0)
 		{
 			while (z != 0)
@@ -132,8 +130,7 @@ void		ft_fill(char *tab, t_fill *new, size_t j, size_t n)
 				i++;
 				z--;
 			}
-			tab[i] = index;
-			i++;
+			tab[i++] = index;
 			x--;
 		}
 		y++;
