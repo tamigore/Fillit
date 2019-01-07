@@ -6,7 +6,7 @@
 /*   By: artprevo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 20:03:13 by artprevo          #+#    #+#             */
-/*   Updated: 2019/01/04 19:12:32 by tamigore         ###   ########.fr       */
+/*   Updated: 2019/01/07 12:51:06 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void		ft_fill(char *tab, t_fill *new, size_t j, size_t n)
 			j = j - ft_countz(buf, 0);
 		i = y + (n * y) + j;
 		x = ft_countx(buf, y);
-        z = 0;
+		z = 0;
 		if (y > 0)
 			z = ft_countz(buf, y);
 		while (x != 0)

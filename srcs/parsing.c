@@ -6,7 +6,7 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 16:18:44 by tamigore          #+#    #+#             */
-/*   Updated: 2019/01/04 20:09:22 by tamigore         ###   ########.fr       */
+/*   Updated: 2019/01/07 12:47:44 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ t_fill		*ft_valid_file(int fd)
 	char	buf[22];
 	char	c;
 	int		r;
-    size_t  len;
+	size_t	len;
 	t_fill	*list;
 
 	if (fd < 0 || read(fd, buf, 0) == -1)
@@ -133,7 +133,7 @@ t_fill		*ft_valid_file(int fd)
 	while ((r = read(fd, buf, 21)) > 0)
 	{
 		buf[r] = '\0';
-        len = ft_strlen(buf);
+		len = ft_strlen(buf);
 		if (!(ft_valid_tetra(buf, 0)) || !(ft_valid_block(buf, 0, 0)))
 			return (NULL);
 		ft_listadd(&list, ft_listnew(c, buf), c);

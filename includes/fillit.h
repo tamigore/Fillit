@@ -6,7 +6,7 @@
 /*   By: artprevo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:09:35 by artprevo          #+#    #+#             */
-/*   Updated: 2019/01/04 19:08:01 by tamigore         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:29:55 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int				ft_countz(char *buf, size_t y);
 int				ft_checkoptileft(char *tab, t_fill *new, size_t n);
 void			ft_placeleft(char *tab, char c);
 void			ft_checkoptiz(char *tab, t_fill *new, size_t j, size_t n);
+void			ft_freelst(t_fill **list);
 
 #endif
