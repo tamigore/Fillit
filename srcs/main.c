@@ -6,14 +6,20 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 16:31:06 by tamigore          #+#    #+#             */
-/*   Updated: 2019/01/07 14:30:55 by tamigore         ###   ########.fr       */
+/*   Updated: 2019/01/07 18:06:14 by artprevo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-int			main(int ac, char **av)
+static void		ft_finish(char *p, t_fill *list)
+{
+	ft_putstr(p);
+	free(p);
+	ft_freelst(&list);
+}
+
+int				main(int ac, char **av)
 {
 	t_fill	*list;
 	char	*p;
@@ -38,8 +44,6 @@ int			main(int ac, char **av)
 		free(p);
 		p = ft_init(i);
 	}
-	ft_putstr(p);
-	free(p);
-	ft_freelst(&list);
+	ft_finish(p, list);
 	return (0);
 }
